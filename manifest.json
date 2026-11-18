@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Ecommerce Price Checker",
+  "version": "2.2.0",
+  "description": "On a product page at Shopee SG, Amazon.sg, Amazon.com, Lazada SG or PDD, finds the same item in the other stores and shows where it is cheapest.",
+  "permissions": [
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://shopee.sg/*",
+    "https://www.amazon.sg/*",
+    "https://www.amazon.com/*",
+    "https://www.lazada.sg/*",
+    "https://mobile.yangkeduo.com/*",
+    "https://open.er-api.com/*",
+    "https://translate.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://shopee.sg/*",
+        "https://www.amazon.sg/*",
+        "https://www.amazon.com/*",
+        "https://www.lazada.sg/*",
+        "https://mobile.yangkeduo.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Open / collapse the price panel"
+  }
+}
